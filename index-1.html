@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinity Shadow Artist ♾️🌑</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#020202;color:#fff;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:35px 35px;opacity:.12;pointer-events:none;z-index:-5}
+
+.shadow{position:fixed;border-radius:50%;filter:blur(90px);opacity:.18;pointer-events:none;z-index:-2}
+.shadow1{width:300px;height:300px;background:#fff;top:5%;left:-100px;animation:move1 10s infinite alternate}
+.shadow2{width:300px;height:300px;background:#777;right:-100px;top:50%;animation:move2 12s infinite alternate}
+@keyframes move1{to{transform:translate(250px,150px)}}
+@keyframes move2{to{transform:translate(-200px,-100px)}}
+
+#welcomePage{position:fixed;inset:0;z-index:1000;background:#000;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;animation:welcomeOut .6s ease 2s forwards}
+.welcomeLogo{font-size:90px;animation:logoIn 1s ease}
+.welcomeTitle{font-size:clamp(28px,7vw,60px);letter-spacing:5px;margin-top:20px;animation:titleIn 1s ease .3s both}
+.welcomeLine{width:280px;height:2px;background:#fff;margin-top:20px;animation:lineIn 1s ease .8s both}
+@keyframes logoIn{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes titleIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lineIn{from{width:0}to{width:280px}}
+@keyframes welcomeOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+#subscribePage{position:fixed;inset:0;z-index:500;background:#020202;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:50px 25px;min-height:100vh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.subscribeLogo{font-size:75px;margin-top:30px;margin-bottom:20px;animation:floating 3s ease-in-out infinite}
+.subscribeTitle{font-size:clamp(32px,8vw,60px);margin-bottom:20px}
+.subscribeText{max-width:650px;color:#aaa;line-height:1.8;font-size:17px;margin-bottom:30px}
+.subscribeInfo{max-width:650px;margin:20px auto;padding:25px;border:1px solid #333;border-radius:25px;background:#0d0d0d;line-height:1.8;color:#ccc}
+.subscribeButtons{display:flex;flex-direction:column;align-items:center;gap:15px;margin-top:20px;margin-bottom:70px;width:100%}
+
+#mainPage{display:none;min-height:100vh;animation:mainIn .8s ease}
+@keyframes mainIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.container{max-width:1050px;width:100%;margin:auto;padding:20px}
+.hero{min-height:90vh;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center}
+.mainLogo{font-size:90px;animation:floating 3s ease-in-out infinite}
+@keyframes floating{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+h1{font-size:clamp(38px,8vw,75px);text-shadow:0 0 15px #fff}
+.tagline{color:#aaa;margin-top:15px;font-size:18px}
+
+.buttons{display:flex;flex-direction:column;align-items:center;gap:15px;margin-top:30px}
+.btn{display:inline-block;width:270px;padding:15px 20px;border-radius:50px;border:1px solid #777;background:#fff;color:#000;text-decoration:none;font-weight:bold;font-size:16px;cursor:pointer;text-align:center;transition:.3s}
+.btn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 0 25px rgba(255,255,255,.5)}
+.darkBtn{background:#111;color:#fff}
+
+#about{display:none;max-width:800px;margin:30px auto;padding:30px;border:1px solid #444;border-radius:25px;background:#101010;line-height:1.8}
+#about h2{margin-bottom:15px}
+#about p{color:#ddd}
+.artList{display:grid;gap:12px;margin:25px 0}
+.artItem{padding:16px;background:#181818;border:1px solid #333;border-radius:15px}
+
+.section{margin:80px auto;text-align:center}
+.sectionTitle{font-size:38px;margin-bottom:15px}
+.sectionText{color:#aaa;margin-bottom:30px}
+
+#gallery{display:none}
+.galleryGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.artCard{min-height:230px;border:1px solid #444;border-radius:22px;background:#101010;display:flex;justify-content:center;align-items:center;flex-direction:column;transition:.3s}
+.artCard:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.artIcon{font-size:65px;margin-bottom:15px}
+.artCard p{color:#888;margin-top:8px}
+
+.featured{max-width:700px;margin:auto;padding:35px;border:1px solid #444;border-radius:25px;background:#101010}
+.featuredIcon{font-size:65px;margin-bottom:15px}
+.featured h2{font-size:30px;margin-bottom:15px}
+.featured p{color:#999;margin-bottom:25px}
+
+.beforeAfter{max-width:800px;margin:30px auto;display:grid;grid-template-columns:1fr 1fr;border:1px solid #444;border-radius:25px;overflow:hidden}
+.before,.after{min-height:220px;display:flex;justify-content:center;align-items:center;flex-direction:column}
+.before{background:#151515}.after{background:#050505}
+.before span,.after span{font-size:60px;margin-bottom:15px}
+.before p,.after p{color:#888;margin-top:8px}
+
+.channelBox{text-align:center;margin-top:80px;padding:40px 20px;border-top:1px solid #333}
+.channelBox h2{margin-bottom:20px}
+.channelLink{display:inline-block;padding:15px 30px;border-radius:50px;border:1px solid #777;background:#111;color:#fff;text-decoration:none;font-weight:bold;transition:.3s}
+.channelLink:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(255,255,255,.3)}
+footer{text-align:center;color:#666;padding:50px 10px 30px}
+
+@media(max-width:600px){
+.welcomeLogo,.subscribeLogo{font-size:65px}
+.mainLogo{font-size:65px}
+.btn{width:90%}
+.beforeAfter{grid-template-columns:1fr}
+.subscribeText{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="shadow shadow1"></div>
+<div class="shadow shadow2"></div>
+
+<!-- PAGE 1 -->
+<section id="welcomePage">
+  <div class="welcomeLogo">♾️🌑</div>
+  <div class="welcomeTitle">INFINITY SHADOW ARTIST</div>
+  <div class="welcomeLine"></div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="subscribePage">
+
+  <div class="subscribeLogo">♾️🌑</div>
+
+  <h2 class="subscribeTitle">Please Subscribe 🔔</h2>
+
+  <p class="subscribeText">
+    Welcome to Infinity Shadow Artist! ♾️🌑
+    <br><br>
+    A place where simple lines become dark and creative masterpieces.
+    <br><br>
+    Explore drawings, shadow art, sketches and satisfying transformations.
+  </p>
+
+  <div class="subscribeInfo">
+    <h3>🎨 What you will find here</h3>
+    <br>
+    🔥 Epic character drawings<br>
+    🌑 Shadow &amp; dark art styles<br>
+    ⚡ Satisfying transformations<br>
+    🎨 Creative and powerful sketches
+    <br><br>
+    Watch till the end to see the magic happen… 😈
+  </div>
+
+  <div class="subscribeInfo">
+    <h3>♾️ Join the journey</h3>
+    <br>
+    If you love art, mystery, and powerful drawings, this channel is for you.
+    <br><br>
+    Subscribe and join the journey of infinite creativity! 🚀
+  </div>
+
+  <div class="subscribeButtons">
+    <a class="btn" href="https://youtube.com/@artist-23k?si=opoLjiLZueV5SIpq" target="_blank">🔔 Subscribe</a>
+
+    <button type="button" id="nextButton" class="btn darkBtn">➡️ NEXT</button>
+  </div>
+
+</section>
+
+<!-- PAGE 3 -->
+<main id="mainPage">
+<div class="container">
+
+<section class="hero">
+  <div class="mainLogo">♾️🌑</div>
+  <h1>Infinity Shadow Artist</h1>
+  <p class="tagline">Simple lines. Dark vibes. Epic creations.</p>
+
+  <div class="buttons">
+    <a class="btn" href="https://youtube.com/@artist-23k?si=opoLjiLZueV5SIpq" target="_blank">🔔 Subscribe</a>
+
+    <a class="btn darkBtn" href="https://youtube.com/shorts/-cETPX8868w?si=ZLGFpLQ_A7gGxZAF" target="_blank">▶️ My Shorts</a>
+
+    <button type="button" class="btn darkBtn" onclick="showAbout()">✨ About The Channel</button>
+
+    <button type="button" class="btn darkBtn" onclick="showGallery()">♾️ Enter The Shadow Gallery</button>
+  </div>
+</section>
+
+<section id="about">
+  <h2>Welcome to Infinity Shadow Artist ♾️🌑</h2>
+  <p>Where simple lines turn into dark, epic creations.</p>
+
+  <div class="artList">
+    <div class="artItem">🔥 Epic character drawings</div>
+    <div class="artItem">🌑 Shadow &amp; dark art styles</div>
+    <div class="artItem">⚡ Satisfying transformations</div>
+    <div class="artItem">🎨 Creative and powerful sketches</div>
+  </div>
+
+  <p>
+    Watch till the end to see the magic happen… 😈
+    <br><br>
+    If you love art, mystery, and powerful drawings, this channel is for you.
+    <br><br>
+    Subscribe and join the journey of infinite creativity ♾️🚀
+  </p>
+</section>
+
+<section id="gallery" class="section">
+  <h2 class="sectionTitle">🌑 Shadow Gallery</h2>
+  <p class="sectionText">Enter the world of dark and creative art.</p>
+
+  <div class="galleryGrid">
+    <div class="artCard"><div class="artIcon">🔥</div><h3>Epic Characters</h3><p>Powerful creations</p></div>
+    <div class="artCard"><div class="artIcon">🌑</div><h3>Shadow Art</h3><p>Dark artistic style</p></div>
+    <div class="artCard"><div class="artIcon">✏️</div><h3>Sketches</h3><p>Simple lines, big ideas</p></div>
+    <div class="artCard"><div class="artIcon">⚡</div><h3>Transformations</h3><p>Watch the magic happen</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="sectionTitle">⚡ From Simple To Epic</h2>
+  <p class="sectionText">Every masterpiece starts with a simple line.</p>
+
+  <div class="beforeAfter">
+    <div class="before"><span>✏️</span><h3>Before</h3><p>Simple sketch</p></div>
+    <div class="after"><span>🎨</span><h3>After</h3><p>Epic creation</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="featured">
+    <div class="featuredIcon">▶️</div>
+    <h2>My Shorts</h2>
+    <p>Watch one of my Shorts from Infinity Shadow Artist.</p>
+    <a class="btn darkBtn" href="https://youtube.com/shorts/-cETPX8868w?si=ZLGFpLQ_A7gGxZAF" target="_blank">🔥 Watch My Shorts</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="featured">
+    <div class="featuredIcon">🎬</div>
+    <h2>See My Latest Video</h2>
+    <p>Visit the Infinity Shadow Artist YouTube channel and explore the latest videos.</p>
+    <a class="btn" href="https://youtube.com/@artist-23k?si=opoLjiLZueV5SIpq" target="_blank">🎬 See My Latest Video</a>
+  </div>
+</section>
+
+<section class="channelBox">
+  <h2>Here is the link to open channel:</h2>
+  <a class="channelLink" href="https://youtube.com/@artist-23k?si=opoLjiLZueV5SIpq" target="_blank">♾️ Infinity Shadow Artist</a>
+</section>
+
+<footer>
+  <div style="font-size:45px">♾️🌑</div>
+  <br>
+  © 2026 Infinity Shadow Artist
+  <br><br>
+  Draw • Create • Transform
+</footer>
+
+</div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const nextButton = document.getElementById("nextButton");
+  const subscribePage = document.getElementById("subscribePage");
+  const mainPage = document.getElementById("mainPage");
+
+  nextButton.addEventListener("click", function(){
+
+    subscribePage.style.display = "none";
+    mainPage.style.display = "block";
+
+    window.scrollTo(0,0);
+  });
+
+});
+
+function showAbout(){
+  const about = document.getElementById("about");
+
+  if(about.style.display === "block"){
+    about.style.display = "none";
+  }else{
+    about.style.display = "block";
+    about.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+
+function showGallery(){
+  const gallery = document.getElementById("gallery");
+
+  if(gallery.style.display === "block"){
+    gallery.style.display = "none";
+  }else{
+    gallery.style.display = "block";
+    gallery.scrollIntoView({behavior:"smooth",block:"center"});
+  }
+}
+</script>
+
+</body>
+</html>
